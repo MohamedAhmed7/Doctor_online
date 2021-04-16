@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
-    'api'
+    'api',
+    'clinics'
 ]
 AUTH_USER_MODEL = 'users.CustomUser' # new
 MIDDLEWARE = [

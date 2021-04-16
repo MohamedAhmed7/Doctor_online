@@ -49,6 +49,7 @@ class loginUser(APIView):
         if (len(user_result) > 0):
             user = user_result[0]
             # check user password
+            # we can return token here for authorization
             if(user.check_password(password)):
                 return Response({'Success':'Login success!'}, 
                 status=status.HTTP_200_ACCEPTED)
