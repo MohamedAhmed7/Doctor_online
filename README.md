@@ -21,7 +21,7 @@ Then install the dependencies:
 
 Once `pip` has finished downloading the dependencies:
 ```sh
-(env)$ cd React-Django
+(env)$ cd Doctor_online
 (env)$ python manage.py makemigrations
 (env)$ python manage.py migrate
 (env)$ python manage.py runserver
