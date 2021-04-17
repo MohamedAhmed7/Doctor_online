@@ -1,14 +1,23 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework import generics, status
-from .serializers import userSerializer, userCreateSerializer, userLoginSerializer
-from users.models import CustomUser
+from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .serializers import userSerializer, userCreateSerializer, userLoginSerializer
+from users.models import CustomUser
 from django.contrib.auth.hashers import make_password
 
+
+# api overvirew
+# GET reservations
+@api_view(['GET'])
 def index(request):
-    return HttpResponse('hello from users')
+    api_urls = {
+		'List all users':'/users/all',
+        'Retrieve user':'/users/user_id',
+		'Update user':'/users/update/user_id',
+		'Delete user':'/users/delete/user_id',
+		}
+    return Response(api_urls)
 
 # @route  GET users/all
 # @desc   List all users

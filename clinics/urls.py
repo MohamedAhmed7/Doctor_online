@@ -1,11 +1,11 @@
 
 from django.urls import path
-from .views import (index, ShowClinics,
+from .views import (index, ListClinics,
 RetrieveClinic, CreateClinic, UpdateClinic, DeleteClinic)
 
 urlpatterns = [
     path('', index),
-    path('all', ShowClinics.as_view()),
+    path('all', ListClinics.as_view()),
     path('create', CreateClinic.as_view()),
     path('<int:clinic_id>', RetrieveClinic.as_view()),
     path('update/<int:clinic_id>', UpdateClinic.as_view()),

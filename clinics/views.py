@@ -1,20 +1,29 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework import generics, status
-from users.models import CustomUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from users.models import CustomUser
+from rest_framework.decorators import api_view
 from .serializers import ClinicSerializer
 from .models import Clinic
+
 # Create your views here.
 
+# api overvirew
+# GET clinics
+@api_view(['GET'])
 def index(request):
-    return HttpResponse('hello from clinics')
+    api_urls = {
+		'List all clinics':'/clinics/all',
+        'Retrieve clinic':'/clinics/clinic_id',
+		'Update clinic':'/clinics/update/clinic_id',
+		'Delete clinic':'/clinics/delete/clinic_id',
+		}
+    return Response(api_urls)
 
 # @route  GET clinics/all
 # @desc   List all clinics
 # @access public
-class ShowClinics(generics.ListAPIView):
+class ListClinics(generics.ListAPIView):
     serializer_class = ClinicSerializer
     queryset = Clinic.objects.all()
 

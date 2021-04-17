@@ -1,13 +1,22 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from .models import Reservations
 from .serializers import reservationSerializer
+
 # Create your views here.
 
+# api overvirew
+# GET reservations
+@api_view(['GET'])
 def index(request):
-    return HttpResponse('hello from reservations')
+    api_urls = {
+		'List all reservations':'/reservations/all',
+        'Retrieve reservation':'/reservations/reservation_id',
+		'Update reservation':'/reservations/update/reservation_id',
+		'Delete reservation':'/reservations/delete/reservation_id',
+		}
+    return Response(api_urls)
 
 # @route  POST reservations/create
 # @desc   create new reservation
