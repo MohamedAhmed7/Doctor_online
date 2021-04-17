@@ -1,7 +1,8 @@
 # Doctor_online
 
 ## Desc: The task is to build api CRUD'S for users(doctor or patient) can register, login and resreve a clinic
-
+## ER Diagram For DB
+![DatabaseDiagram](https://user-images.githubusercontent.com/19196061/115124959-87c2db00-9fc5-11eb-8e54-f423eef6d320.jpeg)
 ## Setup
 
 The first thing to do is to clone the repository:
@@ -31,4 +32,6 @@ http://localhost:8000/users/
 http://localhost:8000/clinics/
 http://localhost:8000/reservations/
 ```
+
+
 
