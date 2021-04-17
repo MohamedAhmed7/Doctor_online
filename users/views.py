@@ -8,28 +8,43 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
 
 def index(request):
-    return HttpResponse('hello from api')
+    return HttpResponse('hello from users')
 
-# @route  GET api/user/<int:user_id>
-# @desc   retrieve or update or delete user
+# @route  GET users/all
+# @desc   List all users
 # @access public
-class userView(generics.RetrieveUpdateAPIView):
+class ListUsers(generics.ListAPIView):
     serializer_class = userSerializer
+    queryset = CustomUser.objects.all()
+
+# @route  PosT users/register
+# @desc   Create user
+# @access public
+class CreateUser(generics.CreateAPIView):
+    serializer_class = userCreateSerializer
+    queryset = CustomUser.objects.all()
+    validate_password = make_password
+
+# @route  PUT users/update/user_id
+# @desc   Update user
+# @access public
+class UpdateUser(generics.UpdateAPIView):
+    serializer_class = userCreateSerializer
     queryset = CustomUser.objects.all()
     lookup_url_kwarg = 'user_id'
 
-# @route  PosT api/register
-# @desc   Create user
+# @route  Delete users/delete/user_id
+# @desc   Delete user
 # @access public
-class createUser(generics.CreateAPIView):
+class DeleteUser(generics.DestroyAPIView):
     serializer_class = userCreateSerializer
     queryset = CustomUser.objects.all()
+    lookup_url_kwarg = 'user_id'
 
-    validate_password = make_password
-# @route  PosT api/login
+# @route  PosT users/login
 # @desc   login user
 # @access public
-class loginUser(APIView):
+class LoginUser(APIView):
     serializer_class = userLoginSerializer
 
     def post(self, request):    
